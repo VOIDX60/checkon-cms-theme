@@ -1,21 +1,57 @@
+/*
+ * Palette copied from checkon-app's own design tokens (frontend/src/styles/
+ * checkon-core-normalized.css - Radix "sand" neutrals + "orange" accent) so
+ * the CMS reads as the same product, not a bolted-on admin panel. Keep this
+ * block in sync if the app's palette changes; nothing else in this file
+ * should need to.
+ */
 :root {
-  --checkon-admin-ink: #172229;
-  --checkon-admin-muted: #607482;
-  --checkon-admin-green: #08765a;
-  --checkon-admin-green-soft: #e1f0eb;
-  --checkon-admin-line: #dbe3e7;
-  --checkon-admin-panel: #f5f7f8;
+  --checkon-admin-ink: #21201c;
+  --checkon-admin-muted: #63635e;
+  --checkon-admin-soft-text: rgba(99, 99, 94, 0.72);
+  --checkon-admin-line: #dad9d6;
+  --checkon-admin-line-soft: #e2e1de;
+  --checkon-admin-sidebar-bg: #f1f0ef;
+  --checkon-admin-surface: #f9f9f8;
+  --checkon-admin-surface-muted: #e2e1de;
+  --checkon-admin-accent: #f76b15;
+  --checkon-admin-accent-hover: #ef5f00;
+  --checkon-admin-accent-soft: rgba(247, 107, 21, 0.12);
+  --checkon-admin-accent-border: rgba(247, 107, 21, 0.3);
+  --checkon-admin-accent-text: #cc4e00;
+  --checkon-admin-radius: 10px;
+  --checkon-admin-radius-lg: 12px;
+  --checkon-admin-shadow-card: 0 1px 2px rgba(33, 32, 28, 0.04), 0 6px 16px rgba(33, 32, 28, 0.055);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --checkon-admin-ink: #eeeeec;
+    --checkon-admin-muted: #b5b3ad;
+    --checkon-admin-soft-text: rgba(181, 179, 173, 0.7);
+    --checkon-admin-line: #3b3a37;
+    --checkon-admin-line-soft: #31312e;
+    --checkon-admin-sidebar-bg: #111110;
+    --checkon-admin-surface: #222221;
+    --checkon-admin-surface-muted: #191918;
+    --checkon-admin-accent: #f76b15;
+    --checkon-admin-accent-hover: #ff801f;
+    --checkon-admin-accent-soft: rgba(247, 107, 21, 0.16);
+    --checkon-admin-accent-border: rgba(247, 107, 21, 0.32);
+    --checkon-admin-accent-text: #ffa057;
+    --checkon-admin-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .cms-menu {
-  background: var(--checkon-admin-panel);
+  background: var(--checkon-admin-sidebar-bg);
   border-right: 1px solid var(--checkon-admin-line);
 }
 
+/* Flat header: a hairline instead of a drop shadow reads calmer/less "boxy". */
 .cms-menu__header {
-  background: #fff;
+  background: var(--checkon-admin-sidebar-bg);
   border-bottom: 1px solid var(--checkon-admin-line);
-  box-shadow: 0 8px 24px rgba(25, 38, 46, 0.06);
 }
 
 .checkon-admin-brand {
@@ -23,7 +59,7 @@
   color: var(--checkon-admin-ink);
   display: flex;
   gap: 10px;
-  min-height: 76px;
+  min-height: 68px;
   padding: 12px 16px;
   text-decoration: none;
 }
@@ -36,21 +72,22 @@
 
 .checkon-admin-brand__mark {
   align-items: center;
-  background: #eef2f2;
-  border-radius: 13px;
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line-soft);
+  border-radius: var(--checkon-admin-radius);
   display: inline-flex !important;
-  flex: 0 0 52px;
-  height: 46px;
+  flex: 0 0 42px;
+  height: 42px;
   justify-content: center;
   padding: 0 !important;
-  width: 52px;
+  width: 42px;
 }
 
 .checkon-admin-brand__mark img {
   display: block;
   height: auto;
-  max-height: 34px;
-  max-width: 48px;
+  max-height: 26px;
+  max-width: 34px;
 }
 
 .checkon-admin-brand__copy {
@@ -64,23 +101,24 @@
 .checkon-admin-brand__copy strong {
   color: var(--checkon-admin-ink) !important;
   display: block;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.1;
 }
 
 .checkon-admin-brand__copy small {
   color: var(--checkon-admin-muted);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .cms-menu .cms-login-status {
   align-items: center;
-  background: #fff;
-  border-top: 1px solid #edf1f2;
+  background: var(--checkon-admin-sidebar-bg);
+  border-top: 1px solid var(--checkon-admin-line);
   display: flex;
   height: 44px;
   min-height: 44px;
@@ -88,40 +126,49 @@
 
 .cms-menu .cms-login-status__profile-link {
   align-items: center;
-  background: #fff !important;
+  background: transparent !important;
+  border-radius: var(--checkon-admin-radius);
   color: var(--checkon-admin-ink) !important;
   display: flex;
   flex: 1 1 auto;
-  min-height: 44px;
-  padding: 0 10px;
+  margin: 4px 4px 4px 6px;
+  min-height: 36px;
+  padding: 0 8px;
   text-decoration: none;
 }
 
 .cms-menu .cms-login-status__profile-link i {
-  color: var(--checkon-admin-green) !important;
+  color: var(--checkon-admin-muted) !important;
   margin-right: 8px;
 }
 
 .cms-menu .cms-login-status__profile-link span {
   color: var(--checkon-admin-ink) !important;
-  font-weight: 700;
+  font-weight: 600;
   opacity: 1 !important;
 }
 
 .cms-menu .cms-login-status__profile-link:hover,
 .cms-menu .cms-login-status__profile-link:focus {
-  background: var(--checkon-admin-green-soft) !important;
-  color: #075d48 !important;
+  background: var(--checkon-admin-accent-soft) !important;
+  color: var(--checkon-admin-accent-text) !important;
+}
+
+.cms-menu .cms-login-status__profile-link:hover i,
+.cms-menu .cms-login-status__profile-link:focus i {
+  color: var(--checkon-admin-accent-text) !important;
 }
 
 .cms-menu .cms-login-status__logout-link {
   align-items: center;
-  background: #fff !important;
-  color: #526a77 !important;
+  background: transparent !important;
+  border-radius: var(--checkon-admin-radius);
+  color: var(--checkon-admin-muted) !important;
   display: flex;
-  flex: 0 0 42px;
-  height: 44px;
+  flex: 0 0 36px;
+  height: 36px;
   justify-content: center;
+  margin: 4px 6px 4px 0;
   opacity: 1 !important;
   text-decoration: none;
   visibility: visible !important;
@@ -129,13 +176,13 @@
 
 .cms-menu .cms-login-status__logout-link:hover,
 .cms-menu .cms-login-status__logout-link:focus {
-  background: #f7e8e8 !important;
-  color: #a22f2f !important;
+  background: var(--checkon-admin-surface-muted) !important;
+  color: var(--checkon-admin-ink) !important;
 }
 
 .cms-menu .cms-panel-content {
-  background: var(--checkon-admin-panel);
-  padding-top: 5px;
+  background: var(--checkon-admin-sidebar-bg);
+  padding-top: 6px;
 }
 
 .cms-menu__list {
@@ -143,7 +190,7 @@
 }
 
 .cms-menu__list li {
-  border-radius: 9px;
+  border-radius: var(--checkon-admin-radius);
   margin: 1px 0;
   overflow: visible;
 }
@@ -151,37 +198,44 @@
 .cms-menu .cms-menu__list li a {
   align-items: center;
   border: 1px solid transparent;
-  border-radius: 9px;
+  border-radius: var(--checkon-admin-radius);
   box-shadow: none !important;
-  color: #39515f;
+  color: var(--checkon-admin-muted);
   display: flex;
+  font-weight: 500;
   margin: 0;
-  min-height: 38px;
+  min-height: 36px;
   overflow: hidden;
-  padding: 8px 8px 8px 12px;
+  padding: 7px 8px 7px 12px;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
 .cms-menu__list li a:hover {
-  border-color: #d7e0e4;
-  background: #e9eef0;
+  background: var(--checkon-admin-surface-muted);
+  border-color: transparent;
   color: var(--checkon-admin-ink);
 }
 
 .cms-menu__list li.current a,
 .cms-menu__list li.opened a {
-  background: var(--checkon-admin-green-soft);
-  border-color: #cfe3dc;
-  color: #075d48;
+  background: var(--checkon-admin-accent-soft);
+  border-color: var(--checkon-admin-accent-border);
+  color: var(--checkon-admin-accent-text);
   font-weight: 700;
 }
 
 .cms-menu__list .menu__icon {
-  color: #5a8595;
+  color: var(--checkon-admin-muted);
+  transition: color 120ms ease;
+}
+
+.cms-menu__list li a:hover .menu__icon {
+  color: var(--checkon-admin-ink);
 }
 
 .cms-menu__list li.current .menu__icon,
 .cms-menu__list li.opened .menu__icon {
-  color: var(--checkon-admin-green);
+  color: var(--checkon-admin-accent-text);
 }
 
 /*
@@ -191,15 +245,15 @@
  * these rules are inert (no box generated) for every item without one.
  */
 .cms-menu__list li::before {
-  border-top: 1px solid var(--checkon-admin-line);
-  color: #71828d;
+  border-top: 1px solid var(--checkon-admin-line-soft);
+  color: var(--checkon-admin-soft-text);
   display: block;
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  margin: 16px 10px 4px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  margin: 14px 10px 4px;
   overflow: visible;
-  padding-top: 12px;
+  padding-top: 10px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -210,11 +264,11 @@
 
 .cms-menu .cms-panel-toggle {
   align-items: center;
-  background: var(--checkon-admin-panel);
+  background: var(--checkon-admin-sidebar-bg);
   border-top: 1px solid var(--checkon-admin-line);
   display: flex;
-  height: 54px;
-  min-height: 54px;
+  height: 50px;
+  min-height: 50px;
   padding: 0 6px;
 }
 
@@ -222,7 +276,7 @@
   align-self: stretch;
   background: transparent;
   flex: 1 1 auto;
-  height: 53px;
+  height: 49px;
   min-width: 0;
   width: auto;
 }
@@ -231,7 +285,7 @@
   align-items: center;
   background: transparent;
   display: flex;
-  height: 53px;
+  height: 49px;
   justify-content: flex-start;
   padding: 0 8px;
   width: 100%;
@@ -244,7 +298,7 @@
 
 .cms-menu .cms-panel-toggle .sticky-toggle {
   flex: 0 0 30px;
-  height: 53px;
+  height: 49px;
   position: static;
   width: 30px;
 }
@@ -253,7 +307,7 @@
 .cms-menu .cms-panel-toggle .toggle-expand {
   align-items: center;
   flex: 0 0 28px;
-  height: 36px;
+  height: 32px;
   justify-content: center;
   margin: 0;
   position: static;
@@ -262,8 +316,14 @@
 
 .cms-menu .cms-panel-toggle a,
 .cms-menu .cms-panel-toggle button {
-  border-radius: 8px;
+  border-radius: var(--checkon-admin-radius);
   box-shadow: none !important;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.cms-menu .cms-panel-toggle a:hover,
+.cms-menu .cms-panel-toggle button:hover {
+  background: var(--checkon-admin-surface-muted);
 }
 
 .cms-menu.collapsed .checkon-admin-brand {
@@ -273,15 +333,15 @@
 }
 
 .cms-menu.collapsed .checkon-admin-brand__mark {
-  background: transparent;
-  flex-basis: 42px;
-  height: 42px;
-  width: 42px;
+  flex-basis: 38px;
+  height: 38px;
+  width: 38px;
 }
 
 .cms-menu.collapsed .cms-login-status__profile-link {
   flex: 0 0 30px;
   justify-content: center;
+  margin: 4px auto;
   min-width: 30px;
   padding: 0;
   width: 30px;
@@ -296,8 +356,7 @@
 }
 
 .cms-menu.collapsed .cms-login-status__logout-link {
-  flex-basis: 28px;
-  width: 28px;
+  display: none;
 }
 
 .cms-menu.collapsed .checkon-admin-brand__copy {

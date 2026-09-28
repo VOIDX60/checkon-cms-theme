@@ -58,20 +58,20 @@ class MenuHeadingExtension extends Extension
             $selector = '#cms-menu #Menu-' . $this->cssIdentifier((string) $code);
             $css .= <<<CSS
 {$selector} a {
-  background: #172b32;
-  border-color: #172b32;
-  border-radius: 10px;
+  background: var(--checkon-admin-accent);
+  border-color: var(--checkon-admin-accent);
+  border-radius: var(--checkon-admin-radius);
   color: #fff;
   font-weight: 700;
   margin-bottom: 10px;
 }
 {$selector} a:hover,
 {$selector} a:focus {
-  background: #0d624d;
+  background: var(--checkon-admin-accent-hover);
   color: #fff;
 }
 {$selector} .menu__icon {
-  color: #8ee0c5;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 CSS;
