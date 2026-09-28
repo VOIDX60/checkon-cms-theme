@@ -70,24 +70,31 @@
   text-decoration: none;
 }
 
+/* The mark is a wide (~2:1) wordmark, not a square icon - no boxed
+   background/border in light mode, just the logo at its natural
+   proportions so it doesn't read as cropped or squeezed. */
 .checkon-admin-brand__mark {
   align-items: center;
-  background: var(--checkon-admin-surface);
-  border: 1px solid var(--checkon-admin-line-soft);
-  border-radius: var(--checkon-admin-radius);
   display: inline-flex !important;
-  flex: 0 0 42px;
-  height: 42px;
+  flex: 0 0 auto;
   justify-content: center;
   padding: 0 !important;
-  width: 42px;
 }
 
 .checkon-admin-brand__mark img {
   display: block;
-  height: auto;
-  max-height: 26px;
-  max-width: 34px;
+  height: 28px;
+  width: auto;
+}
+
+/* Dark mode: the mark is solid dark ink, so it needs a light plate behind
+   it to stay visible - sized to its wide aspect ratio, not a tight square. */
+@media (prefers-color-scheme: dark) {
+  .checkon-admin-brand__mark {
+    background: #f1f0ef;
+    border-radius: var(--checkon-admin-radius);
+    padding: 6px 10px !important;
+  }
 }
 
 .checkon-admin-brand__copy {
@@ -186,17 +193,18 @@
 }
 
 .cms-menu__list {
-  padding: 0 8px 12px;
+  padding: 0 10px 12px;
 }
 
 .cms-menu__list li {
   border-radius: var(--checkon-admin-radius);
-  margin: 1px 0;
+  margin: 3px 0;
   overflow: visible;
 }
 
 .cms-menu .cms-menu__list li a {
   align-items: center;
+  background: transparent;
   border: 1px solid transparent;
   border-radius: var(--checkon-admin-radius);
   box-shadow: none !important;
@@ -204,10 +212,21 @@
   display: flex;
   font-weight: 500;
   margin: 0;
-  min-height: 36px;
+  min-height: 40px;
   overflow: hidden;
-  padding: 7px 8px 7px 12px;
+  padding: 9px 10px 9px 16px;
   transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+/* Core positions the icon absolutely and the label via a fixed left
+   margin, both tuned for its own tighter default layout - open both out a
+   touch for more air between the icon and the label. */
+.cms-menu:not(.collapsed) .cms-menu__list .menu__icon {
+  left: 16px !important;
+}
+
+.cms-menu:not(.collapsed) .cms-menu__list li a .text {
+  margin-left: 42px !important;
 }
 
 .cms-menu__list li a:hover {
@@ -267,33 +286,19 @@
   background: var(--checkon-admin-sidebar-bg);
   border-top: 1px solid var(--checkon-admin-line);
   display: flex;
+  gap: 6px;
   height: 50px;
+  justify-content: flex-end;
   min-height: 50px;
-  padding: 0 6px;
+  padding: 0 10px;
 }
 
+/* Framework's own "Help menu" button - just the SilverStripe logo once
+   collapsed, generic SilverStripe doc links when open. Not useful in a
+   CheckOn-branded admin (CheckOn's own User Guide covers that), so it's
+   dropped entirely rather than left as a stray third-party mark. */
 .cms-menu .cms-panel-toggle .cms-help__toggle {
-  align-self: stretch;
-  background: transparent;
-  flex: 1 1 auto;
-  height: 49px;
-  min-width: 0;
-  width: auto;
-}
-
-.cms-menu .cms-panel-toggle .cms-help__menu {
-  align-items: center;
-  background: transparent;
-  display: flex;
-  height: 49px;
-  justify-content: flex-start;
-  padding: 0 8px;
-  width: 100%;
-}
-
-.cms-menu .cms-panel-toggle .cms-help__logo {
-  flex: 0 0 auto;
-  margin: 0;
+  display: none;
 }
 
 .cms-menu .cms-panel-toggle .sticky-toggle {
@@ -332,10 +337,8 @@
   padding-right: 4px;
 }
 
-.cms-menu.collapsed .checkon-admin-brand__mark {
-  flex-basis: 38px;
-  height: 38px;
-  width: 38px;
+.cms-menu.collapsed .checkon-admin-brand__mark img {
+  height: 24px;
 }
 
 .cms-menu.collapsed .cms-login-status__profile-link {
@@ -365,14 +368,17 @@
 
 /*
  * Minimised menu: the framework positions .menu__icon absolutely at a fixed
- * left offset that assumes the list has no horizontal padding. The padding
- * added to .cms-menu__list / the links above shifts every icon off-centre in
- * the 60px rail, so in the collapsed state drop that padding and centre the
- * icon explicitly instead.
+ * left offset that assumes the list has no horizontal padding, which - given
+ * the padding this theme adds to .cms-menu__list / the links above - shifts
+ * every icon off-centre in the 60px rail. Centre the icon explicitly with
+ * left: 50% / translateX(-50%) instead, which is width-agnostic: it stays
+ * centred whatever padding the button ends up with, so unlike the framework
+ * default this can keep a real inset from the rail's edges rather than
+ * stretching edge-to-edge.
  */
 #cms-menu.collapsed .cms-menu__list {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #cms-menu.collapsed .cms-menu__list li a {
