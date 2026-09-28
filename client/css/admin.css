@@ -1,0 +1,327 @@
+:root {
+  --checkon-admin-ink: #172229;
+  --checkon-admin-muted: #607482;
+  --checkon-admin-green: #08765a;
+  --checkon-admin-green-soft: #e1f0eb;
+  --checkon-admin-line: #dbe3e7;
+  --checkon-admin-panel: #f5f7f8;
+}
+
+.cms-menu {
+  background: var(--checkon-admin-panel);
+  border-right: 1px solid var(--checkon-admin-line);
+}
+
+.cms-menu__header {
+  background: #fff;
+  border-bottom: 1px solid var(--checkon-admin-line);
+  box-shadow: 0 8px 24px rgba(25, 38, 46, 0.06);
+}
+
+.checkon-admin-brand {
+  align-items: center;
+  color: var(--checkon-admin-ink);
+  display: flex;
+  gap: 10px;
+  min-height: 76px;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.checkon-admin-brand:hover,
+.checkon-admin-brand:focus {
+  color: var(--checkon-admin-ink);
+  text-decoration: none;
+}
+
+.checkon-admin-brand__mark {
+  align-items: center;
+  background: #eef2f2;
+  border-radius: 13px;
+  display: inline-flex !important;
+  flex: 0 0 52px;
+  height: 46px;
+  justify-content: center;
+  padding: 0 !important;
+  width: 52px;
+}
+
+.checkon-admin-brand__mark img {
+  display: block;
+  height: auto;
+  max-height: 34px;
+  max-width: 48px;
+}
+
+.checkon-admin-brand__copy {
+  color: var(--checkon-admin-ink) !important;
+  display: grid;
+  gap: 1px;
+  line-height: 1.15;
+  padding: 0 !important;
+}
+
+.checkon-admin-brand__copy strong {
+  color: var(--checkon-admin-ink) !important;
+  display: block;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.checkon-admin-brand__copy small {
+  color: var(--checkon-admin-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cms-menu .cms-login-status {
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid #edf1f2;
+  display: flex;
+  height: 44px;
+  min-height: 44px;
+}
+
+.cms-menu .cms-login-status__profile-link {
+  align-items: center;
+  background: #fff !important;
+  color: var(--checkon-admin-ink) !important;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.cms-menu .cms-login-status__profile-link i {
+  color: var(--checkon-admin-green) !important;
+  margin-right: 8px;
+}
+
+.cms-menu .cms-login-status__profile-link span {
+  color: var(--checkon-admin-ink) !important;
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+.cms-menu .cms-login-status__profile-link:hover,
+.cms-menu .cms-login-status__profile-link:focus {
+  background: var(--checkon-admin-green-soft) !important;
+  color: #075d48 !important;
+}
+
+.cms-menu .cms-login-status__logout-link {
+  align-items: center;
+  background: #fff !important;
+  color: #526a77 !important;
+  display: flex;
+  flex: 0 0 42px;
+  height: 44px;
+  justify-content: center;
+  opacity: 1 !important;
+  text-decoration: none;
+  visibility: visible !important;
+}
+
+.cms-menu .cms-login-status__logout-link:hover,
+.cms-menu .cms-login-status__logout-link:focus {
+  background: #f7e8e8 !important;
+  color: #a22f2f !important;
+}
+
+.cms-menu .cms-panel-content {
+  background: var(--checkon-admin-panel);
+  padding-top: 5px;
+}
+
+.cms-menu__list {
+  padding: 0 8px 12px;
+}
+
+.cms-menu__list li {
+  border-radius: 9px;
+  margin: 1px 0;
+  overflow: visible;
+}
+
+.cms-menu .cms-menu__list li a {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  box-shadow: none !important;
+  color: #39515f;
+  display: flex;
+  margin: 0;
+  min-height: 38px;
+  overflow: hidden;
+  padding: 8px 8px 8px 12px;
+}
+
+.cms-menu__list li a:hover {
+  border-color: #d7e0e4;
+  background: #e9eef0;
+  color: var(--checkon-admin-ink);
+}
+
+.cms-menu__list li.current a,
+.cms-menu__list li.opened a {
+  background: var(--checkon-admin-green-soft);
+  border-color: #cfe3dc;
+  color: #075d48;
+  font-weight: 700;
+}
+
+.cms-menu__list .menu__icon {
+  color: #5a8595;
+}
+
+.cms-menu__list li.current .menu__icon,
+.cms-menu__list li.opened .menu__icon {
+  color: var(--checkon-admin-green);
+}
+
+/*
+ * Section heading typography. A menu item's ::before only renders once a
+ * "content" value is set - Checkon\CmsTheme\Extension\MenuHeadingExtension
+ * emits that per host-app config (LeftAndMain.menu_section_headings), so
+ * these rules are inert (no box generated) for every item without one.
+ */
+.cms-menu__list li::before {
+  border-top: 1px solid var(--checkon-admin-line);
+  color: #71828d;
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  margin: 16px 10px 4px;
+  overflow: visible;
+  padding-top: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cms-menu.collapsed .cms-menu__list li::before {
+  display: none;
+}
+
+.cms-menu .cms-panel-toggle {
+  align-items: center;
+  background: var(--checkon-admin-panel);
+  border-top: 1px solid var(--checkon-admin-line);
+  display: flex;
+  height: 54px;
+  min-height: 54px;
+  padding: 0 6px;
+}
+
+.cms-menu .cms-panel-toggle .cms-help__toggle {
+  align-self: stretch;
+  background: transparent;
+  flex: 1 1 auto;
+  height: 53px;
+  min-width: 0;
+  width: auto;
+}
+
+.cms-menu .cms-panel-toggle .cms-help__menu {
+  align-items: center;
+  background: transparent;
+  display: flex;
+  height: 53px;
+  justify-content: flex-start;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.cms-menu .cms-panel-toggle .cms-help__logo {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.cms-menu .cms-panel-toggle .sticky-toggle {
+  flex: 0 0 30px;
+  height: 53px;
+  position: static;
+  width: 30px;
+}
+
+.cms-menu .cms-panel-toggle .toggle-collapse,
+.cms-menu .cms-panel-toggle .toggle-expand {
+  align-items: center;
+  flex: 0 0 28px;
+  height: 36px;
+  justify-content: center;
+  margin: 0;
+  position: static;
+  width: 28px;
+}
+
+.cms-menu .cms-panel-toggle a,
+.cms-menu .cms-panel-toggle button {
+  border-radius: 8px;
+  box-shadow: none !important;
+}
+
+.cms-menu.collapsed .checkon-admin-brand {
+  justify-content: center;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.cms-menu.collapsed .checkon-admin-brand__mark {
+  background: transparent;
+  flex-basis: 42px;
+  height: 42px;
+  width: 42px;
+}
+
+.cms-menu.collapsed .cms-login-status__profile-link {
+  flex: 0 0 30px;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0;
+  width: 30px;
+}
+
+.cms-menu.collapsed .cms-login-status__profile-link i {
+  margin: 0;
+}
+
+.cms-menu.collapsed .cms-login-status__profile-link span {
+  display: none;
+}
+
+.cms-menu.collapsed .cms-login-status__logout-link {
+  flex-basis: 28px;
+  width: 28px;
+}
+
+.cms-menu.collapsed .checkon-admin-brand__copy {
+  display: none;
+}
+
+/*
+ * Minimised menu: the framework positions .menu__icon absolutely at a fixed
+ * left offset that assumes the list has no horizontal padding. The padding
+ * added to .cms-menu__list / the links above shifts every icon off-centre in
+ * the 60px rail, so in the collapsed state drop that padding and centre the
+ * icon explicitly instead.
+ */
+#cms-menu.collapsed .cms-menu__list {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#cms-menu.collapsed .cms-menu__list li a {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#cms-menu.collapsed .cms-menu__list .menu__icon {
+  left: 50%;
+  transform: translateX(-50%);
+}

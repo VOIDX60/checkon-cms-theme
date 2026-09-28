@@ -1,0 +1,8 @@
+---
+Name: checkon-cms-theme
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - 'voidx60/checkon-cms-theme:client/css/admin.css'
+  extensions:
+    - Checkon\CmsTheme\Extension\MenuHeadingExtension
