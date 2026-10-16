@@ -4,15 +4,15 @@
 	<div class="cms-menu__header">
 		<a
 			class="checkon-admin-brand"
-			href="$BaseHref/admin/accounts"
-			aria-label="CheckOn administration"
+			href="$CheckonBrand.Link"
+			aria-label="$CheckonBrand.Name administration"
 		>
 			<span class="checkon-admin-brand__mark">
-				<img src="$resourceURL('voidx60/checkon-cms-theme:client/images/logo.png')" alt="">
+				<img src="$resourceURL($CheckonBrand.LogoResource)" alt="">
 			</span>
 			<span class="checkon-admin-brand__copy">
-				<strong>CheckOn</strong>
-				<small>Admin console</small>
+				<strong>$CheckonBrand.Name</strong>
+				<small>$CheckonBrand.Subtitle</small>
 			</span>
 		</a>
 		<% include SilverStripe\\Admin\\LeftAndMain_MenuStatus %>

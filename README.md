@@ -64,10 +64,33 @@ Headings only render for menu items the current CMS user can actually see -
 if nobody with access to the group's first item is logged in, the heading
 doesn't appear (same as a section with no visible items).
 
+## Branding
+
+The name, the line under it, where the logo links, the logo and the accent colour are
+config, so the same theme works on any site. Unset, the admin reads as CheckOn's.
+
+```yaml
+Checkon\CmsTheme\Branding:
+  name: 'Otoko'
+  subtitle: 'Site admin'
+  link: 'admin/pages'                              # where the logo goes; default 'admin'
+  logo: 'vendor/module:client/images/logo.png'     # a "vendor/module:path" resource
+  accent: '#0f766e'                                # #rrggbb; hover and tint colours follow
+```
+
+The browser-tab title ("... Admin - Pages") is SilverStripe's own
+`SilverStripe\Admin\LeftAndMain.application_name`; set it alongside.
+
+A new site needs nothing else: install, flush, and the whole CMS (menu, header, buttons,
+page tree, forms, tabs, tables, dialogs, sign-in page) takes the skin. The menu headings and
+highlighted link above are optional and only appear where a site configures them.
+
+## Versions
+
+Built and tested on SilverStripe 6. The CMS styling and menu work on 5 as well, but the
+sign-in page restyle relies on SilverStripe 6's `silverstripe/login-forms`, so on 5 the sign-in
+page stays stock.
+
 ## What this theme does not do
 
-It doesn't touch page/element templates, only the CMS admin chrome. It also
-doesn't attempt to be a generic drop-in for other SilverStripe sites - the
-default brand text/logo/home-link are CheckOn's; fork or extend
-`templates/SilverStripe/Admin/LeftAndMain_Menu.ss` if you need different
-copy.
+It doesn't touch page/element templates, only the CMS admin chrome.

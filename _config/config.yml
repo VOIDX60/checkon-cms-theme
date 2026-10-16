@@ -7,9 +7,11 @@ SilverStripe\Admin\LeftAndMain:
     - 'voidx60/checkon-cms-theme:client/css/admin-content.css'
   extensions:
     - Checkon\CmsTheme\Extension\MenuHeadingExtension
+    - Checkon\CmsTheme\Extension\BrandingExtension
 
 # The sign-in page gets the same skin, and stays light like the rest of the CMS.
 SilverStripe\Security\Security:
   enable_dark_mode: false
   extensions:
     - Checkon\CmsTheme\Extension\LoginStylesExtension
+    - Checkon\CmsTheme\Extension\BrandingExtension
