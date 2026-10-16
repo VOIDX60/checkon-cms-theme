@@ -31,8 +31,8 @@ class MenuHeadingExtension extends Extension
 
     public function init()
     {
-        $headings = (array) $this->owner->config()->get('menu_section_headings');
-        $highlights = (array) $this->owner->config()->get('menu_highlight_items');
+        $headings = (array) $this->getOwner()->config()->get('menu_section_headings');
+        $highlights = (array) $this->getOwner()->config()->get('menu_highlight_items');
 
         if (!$headings && !$highlights) {
             return;
