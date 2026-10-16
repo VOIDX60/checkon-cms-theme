@@ -68,23 +68,44 @@ class MenuHeadingExtension extends Extension
 
         foreach ($highlights as $code) {
             $selector = '#cms-menu #Menu-' . $this->cssIdentifier((string) $code);
+            $expanded = '#cms-menu:not(.collapsed) #Menu-' . $this->cssIdentifier((string) $code);
             $css .= <<<CSS
 {$selector} a {
-  background: var(--checkon-admin-surface);
-  border: 1px solid var(--checkon-admin-line-strong);
+  background: var(--checkon-admin-ink);
+  border: 1px solid var(--checkon-admin-ink);
   border-radius: var(--checkon-admin-radius);
-  color: var(--checkon-admin-ink);
+  box-shadow: 0 1px 2px rgba(33, 32, 28, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  color: #fff;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  min-height: 40px;
+  padding-right: 14px;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
 }
 {$selector} a:hover,
 {$selector} a:focus {
-  background: var(--checkon-admin-surface);
-  border-color: var(--checkon-admin-accent);
-  color: var(--checkon-admin-accent-text);
+  background: #34322d;
+  border-color: #34322d;
+  color: #fff;
+  transform: translateY(-1px);
+}
+{$expanded} a .text {
+  color: #fff;
+  font-size: 13px;
+  margin-left: 34px !important;
+  white-space: nowrap;
+}
+{$expanded} a::after {
+  color: var(--checkon-admin-accent);
+  flex: none;
+  margin-right: 2px;
+  content: "\\2197";
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: auto;
 }
 {$selector} .menu__icon {
-  color: var(--checkon-admin-accent-text);
+  color: var(--checkon-admin-accent);
 }
 
 CSS;

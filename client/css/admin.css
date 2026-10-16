@@ -128,7 +128,8 @@
   text-decoration: none;
 }
 
-.cms-menu .cms-login-status__profile-link i {
+.cms-menu .cms-login-status__profile-link i,
+.cms-menu .cms-login-status__profile-link .cms-login-status__profile-icon {
   color: var(--checkon-admin-muted) !important;
   margin-right: 8px;
 }
@@ -146,7 +147,9 @@
 }
 
 .cms-menu .cms-login-status__profile-link:hover i,
-.cms-menu .cms-login-status__profile-link:focus i {
+.cms-menu .cms-login-status__profile-link:focus i,
+.cms-menu .cms-login-status__profile-link:hover .cms-login-status__profile-icon,
+.cms-menu .cms-login-status__profile-link:focus .cms-login-status__profile-icon {
   color: var(--checkon-admin-accent-text) !important;
 }
 
@@ -334,11 +337,15 @@
   width: 30px;
 }
 
-.cms-menu.collapsed .cms-login-status__profile-link i {
+.cms-menu.collapsed .cms-login-status__profile-link i,
+.cms-menu.collapsed .cms-login-status__profile-link .cms-login-status__profile-icon {
+  display: inline-block;
   margin: 0;
 }
 
-.cms-menu.collapsed .cms-login-status__profile-link span {
+/* Collapsed, only the person icon shows: hide the name, not the icon (which is a span in 6). */
+.cms-menu.collapsed .cms-login-status__profile-link .cms-login-status__profile-text,
+.cms-menu.collapsed .cms-login-status__profile-link span:not(.cms-login-status__profile-icon) {
   display: none;
 }
 
