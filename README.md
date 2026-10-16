@@ -1,8 +1,12 @@
 # checkon-cms-theme
 
-CheckOn's branded admin theme for SilverStripe 5's CMS: the logo/colour menu
-header, section headings and highlighted menu items driven by config, and a
-fix for the icon alignment in the collapsed (minimised) menu rail.
+CheckOn's branded admin theme for the SilverStripe CMS (5 and 6): a quiet, light,
+business-style skin for the whole CMS (menu, header, buttons, page tree, forms,
+tabs, tables, dialogs and the sign-in page), with section headings and a
+highlighted menu item driven by config.
+
+The CMS stays light on purpose: the framework's own screens have no dark theme
+for this to match.
 
 ## Install
 

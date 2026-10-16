@@ -29,7 +29,19 @@ class MenuHeadingExtension extends Extension
 
     private static array $menu_highlight_items = [];
 
-    public function init()
+    /** SilverStripe 6 runs this hook from LeftAndMain::init(). */
+    public function onInit(): void
+    {
+        $this->applyMenuConfig();
+    }
+
+    /** SilverStripe 5 called the extension's own init(). */
+    public function init(): void
+    {
+        $this->applyMenuConfig();
+    }
+
+    private function applyMenuConfig(): void
     {
         $headings = (array) $this->getOwner()->config()->get('menu_section_headings');
         $highlights = (array) $this->getOwner()->config()->get('menu_highlight_items');
@@ -58,20 +70,21 @@ class MenuHeadingExtension extends Extension
             $selector = '#cms-menu #Menu-' . $this->cssIdentifier((string) $code);
             $css .= <<<CSS
 {$selector} a {
-  background: var(--checkon-admin-accent);
-  border-color: var(--checkon-admin-accent);
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line-strong);
   border-radius: var(--checkon-admin-radius);
-  color: #fff;
-  font-weight: 700;
+  color: var(--checkon-admin-ink);
+  font-weight: 600;
   margin-bottom: 10px;
 }
 {$selector} a:hover,
 {$selector} a:focus {
-  background: var(--checkon-admin-accent-hover);
-  color: #fff;
+  background: var(--checkon-admin-surface);
+  border-color: var(--checkon-admin-accent);
+  color: var(--checkon-admin-accent-text);
 }
 {$selector} .menu__icon {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--checkon-admin-accent-text);
 }
 
 CSS;

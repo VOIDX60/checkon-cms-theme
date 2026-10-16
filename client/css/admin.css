@@ -1,46 +1,40 @@
 /*
- * Palette copied from checkon-app's own design tokens (frontend/src/styles/
- * checkon-core-normalized.css - Radix "sand" neutrals + "orange" accent) so
- * the CMS reads as the same product, not a bolted-on admin panel. Keep this
- * block in sync if the app's palette changes; nothing else in this file
- * should need to.
+ * CheckOn admin: a quiet, business-like skin for the SilverStripe CMS.
+ * Palette from checkon-app's own tokens (Radix "sand" neutrals + "orange" accent),
+ * used sparingly: neutrals carry the layout, orange marks what is active or primary.
+ * Light only - the CMS's own screens have no dark theme to match.
  */
 :root {
+  color-scheme: light;
   --checkon-admin-ink: #21201c;
-  --checkon-admin-muted: #63635e;
-  --checkon-admin-soft-text: rgba(99, 99, 94, 0.72);
-  --checkon-admin-line: #dad9d6;
-  --checkon-admin-line-soft: #e2e1de;
-  --checkon-admin-sidebar-bg: #f1f0ef;
-  --checkon-admin-surface: #f9f9f8;
-  --checkon-admin-surface-muted: #e2e1de;
+  --checkon-admin-text: #3d3c38;
+  --checkon-admin-muted: #6b6a65;
+  --checkon-admin-soft-text: #9a9993;
+  --checkon-admin-line: #e7e6e3;
+  --checkon-admin-line-strong: #d3d2ce;
+  --checkon-admin-line-soft: #efeeec;
+  --checkon-admin-page: #f7f7f6;
+  --checkon-admin-sidebar-bg: #fbfbfa;
+  --checkon-admin-surface: #ffffff;
+  --checkon-admin-surface-muted: #f3f3f1;
   --checkon-admin-accent: #f76b15;
-  --checkon-admin-accent-hover: #ef5f00;
-  --checkon-admin-accent-soft: rgba(247, 107, 21, 0.12);
-  --checkon-admin-accent-border: rgba(247, 107, 21, 0.3);
-  --checkon-admin-accent-text: #cc4e00;
-  --checkon-admin-radius: 10px;
+  --checkon-admin-accent-hover: #e5600f;
+  --checkon-admin-accent-soft: rgba(247, 107, 21, 0.09);
+  --checkon-admin-accent-border: rgba(247, 107, 21, 0.28);
+  --checkon-admin-accent-text: #c24a00;
+  --checkon-admin-red: #d4373c;
+  --checkon-admin-green: #2a7e3b;
+  --checkon-admin-radius: 8px;
   --checkon-admin-radius-lg: 12px;
-  --checkon-admin-shadow-card: 0 1px 2px rgba(33, 32, 28, 0.04), 0 6px 16px rgba(33, 32, 28, 0.055);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --checkon-admin-ink: #eeeeec;
-    --checkon-admin-muted: #b5b3ad;
-    --checkon-admin-soft-text: rgba(181, 179, 173, 0.7);
-    --checkon-admin-line: #3b3a37;
-    --checkon-admin-line-soft: #31312e;
-    --checkon-admin-sidebar-bg: #111110;
-    --checkon-admin-surface: #222221;
-    --checkon-admin-surface-muted: #191918;
-    --checkon-admin-accent: #f76b15;
-    --checkon-admin-accent-hover: #ff801f;
-    --checkon-admin-accent-soft: rgba(247, 107, 21, 0.16);
-    --checkon-admin-accent-border: rgba(247, 107, 21, 0.32);
-    --checkon-admin-accent-text: #ffa057;
-    --checkon-admin-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
+  --checkon-admin-ring: 0 0 0 3px rgba(247, 107, 21, 0.18);
+  --checkon-admin-shadow: 0 1px 2px rgba(33, 32, 28, 0.04);
+  --checkon-admin-shadow-pop: 0 8px 24px rgba(33, 32, 28, 0.12), 0 1px 3px rgba(33, 32, 28, 0.06);
+  --bs-primary: #f76b15;
+  --bs-primary-rgb: 247, 107, 21;
+  --bs-link-color: #21201c;
+  --bs-link-color-rgb: 33, 32, 28;
+  --bs-link-hover-color: #c24a00;
+  --checkon-admin-font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .cms-menu {
@@ -85,16 +79,6 @@
   display: block;
   height: 28px;
   width: auto;
-}
-
-/* Dark mode: the mark is solid dark ink, so it needs a light plate behind
-   it to stay visible - sized to its wide aspect ratio, not a tight square. */
-@media (prefers-color-scheme: dark) {
-  .checkon-admin-brand__mark {
-    background: #f1f0ef;
-    border-radius: var(--checkon-admin-radius);
-    padding: 6px 10px !important;
-  }
 }
 
 .checkon-admin-brand__copy {
@@ -198,7 +182,7 @@
 
 .cms-menu__list li {
   border-radius: var(--checkon-admin-radius);
-  margin: 3px 0;
+  margin: 1px 0;
   overflow: visible;
 }
 
@@ -212,9 +196,9 @@
   display: flex;
   font-weight: 500;
   margin: 0;
-  min-height: 40px;
+  min-height: 36px;
   overflow: hidden;
-  padding: 9px 10px 9px 16px;
+  padding: 7px 10px 7px 16px;
   transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
@@ -238,9 +222,9 @@
 .cms-menu__list li.current a,
 .cms-menu__list li.opened a {
   background: var(--checkon-admin-accent-soft);
-  border-color: var(--checkon-admin-accent-border);
+  border-color: transparent;
   color: var(--checkon-admin-accent-text);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .cms-menu__list .menu__icon {

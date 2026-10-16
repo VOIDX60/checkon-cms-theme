@@ -4,5 +4,12 @@ Name: checkon-cms-theme
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'voidx60/checkon-cms-theme:client/css/admin.css'
+    - 'voidx60/checkon-cms-theme:client/css/admin-content.css'
   extensions:
     - Checkon\CmsTheme\Extension\MenuHeadingExtension
+
+# The sign-in page gets the same skin, and stays light like the rest of the CMS.
+SilverStripe\Security\Security:
+  enable_dark_mode: false
+  extensions:
+    - Checkon\CmsTheme\Extension\LoginStylesExtension

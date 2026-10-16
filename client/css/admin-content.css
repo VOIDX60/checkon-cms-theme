@@ -1,0 +1,582 @@
+/*
+ * The CMS content area: header, buttons, page tree, forms, tabs, tables and dialogs.
+ * Sits on the tokens declared at the top of admin.css. Specificity is kept just above the
+ * framework's own rules instead of reaching for !important.
+ */
+
+body,
+.cms,
+.cms-content,
+.cms-container {
+  background: var(--checkon-admin-page);
+  color: var(--checkon-admin-text);
+  font-family: var(--checkon-admin-font);
+  font-size: 13.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea,
+.btn,
+.form-control,
+table {
+  font-family: var(--checkon-admin-font);
+}
+
+/* Links: ink by default, accent on hover, never the stock blue. */
+.cms a,
+.cms-content a {
+  color: var(--checkon-admin-ink);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.cms .cms-content a:not(.btn):not(.nav-link):not(.dropdown-item),
+.cms .cms-content a:not(.btn):not(.nav-link):not(.dropdown-item):link,
+.cms .cms-content a:not(.btn):not(.nav-link):not(.dropdown-item):visited {
+  color: var(--checkon-admin-ink);
+  text-decoration: none;
+}
+
+.cms .cms-content a:not(.btn):not(.nav-link):not(.dropdown-item):hover,
+.cms .cms-content a:not(.btn):not(.nav-link):not(.dropdown-item):focus {
+  color: var(--checkon-admin-accent-text);
+  text-decoration: none;
+}
+
+/* Inline links in running text and URL segments read as links by their underline. */
+.cms .form__field-holder a:not(.btn),
+.cms .form-group .form__field-holder a:not(.btn):link {
+  text-decoration: underline;
+  text-decoration-color: var(--checkon-admin-line-strong);
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: rgba(247, 107, 21, 0.22);
+}
+
+/* Header: a plain white bar with a hairline. */
+.cms-content-header,
+.cms-content-header.north {
+  background: var(--checkon-admin-surface);
+  border-bottom: 1px solid var(--checkon-admin-line);
+  box-shadow: none;
+  min-height: 56px;
+}
+
+.cms-content-header h2,
+.cms-content-header .breadcrumbs-wrapper,
+.cms-content-header .breadcrumbs-wrapper h2,
+.cms-content-header .breadcrumbs-wrapper .cms-panel-link {
+  color: var(--checkon-admin-ink);
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.breadcrumbs-wrapper .crumb,
+.breadcrumbs-wrapper .breadcrumb__item-title {
+  color: var(--checkon-admin-muted);
+  font-weight: 500;
+}
+
+.cms-content-header .cms-content-header-info,
+.cms-content-header .cms-content-header-tabs {
+  align-self: stretch;
+}
+
+/* Toolbar under the header (Add new, Batch actions, search). */
+.cms-content-toolbar,
+.toolbar--content,
+.cms-content-tools .toolbar {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------- Buttons */
+
+.btn {
+  border-radius: var(--checkon-admin-radius);
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+  min-height: 32px;
+  padding: 6px 14px;
+  text-shadow: none;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:focus,
+.btn.focus,
+.btn:active:focus {
+  box-shadow: var(--checkon-admin-ring);
+  outline: 0;
+}
+
+.btn-primary,
+.btn-success,
+.btn-primary.btn-primary,
+.btn-success.btn-success {
+  background: var(--checkon-admin-accent);
+  border: 1px solid var(--checkon-admin-accent);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background: var(--checkon-admin-accent-hover);
+  border-color: var(--checkon-admin-accent-hover);
+  color: #fff;
+}
+
+.btn-secondary,
+.btn-outline-secondary,
+.btn-outline-primary,
+.btn-outline-light,
+.btn-light {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line-strong);
+  color: var(--checkon-admin-ink);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-primary:hover,
+.btn-outline-light:hover,
+.btn-light:hover {
+  background: var(--checkon-admin-surface-muted);
+  border-color: var(--checkon-admin-muted);
+  color: var(--checkon-admin-ink);
+}
+
+.btn-danger,
+.btn-outline-danger {
+  background: var(--checkon-admin-surface);
+  border: 1px solid rgba(212, 55, 60, 0.4);
+  color: var(--checkon-admin-red);
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-outline-danger:hover,
+.btn-outline-danger:focus {
+  background: var(--checkon-admin-red);
+  border-color: var(--checkon-admin-red);
+  color: #fff;
+}
+
+/* "Saved" / "Published" status chips in the page footer: quiet green, no heavy fill. */
+.btn-outline-success,
+.btn-outline-success:not(:disabled):not(.disabled) {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line-strong);
+  color: var(--checkon-admin-green);
+}
+
+.btn-link {
+  color: var(--checkon-admin-accent-text);
+}
+
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.5;
+}
+
+/* ------------------------------------------------------------------ Forms */
+
+.form-control,
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group input[type="search"],
+.form-group select,
+.form-group textarea {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line-strong);
+  border-radius: var(--checkon-admin-radius);
+  box-shadow: none;
+  color: var(--checkon-admin-ink);
+  font-size: 13.5px;
+  min-height: 36px;
+  padding: 7px 12px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.form-control:hover:not(:focus):not(:disabled) {
+  border-color: var(--checkon-admin-soft-text);
+}
+
+.form-control:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--checkon-admin-accent);
+  box-shadow: var(--checkon-admin-ring);
+  outline: 0;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background: var(--checkon-admin-surface-muted);
+  color: var(--checkon-admin-muted);
+}
+
+.form-group > label,
+.form__field-label,
+.form-group .form__field-label {
+  color: var(--checkon-admin-ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.form__field-description,
+.form-text,
+.form-group .description,
+.form__field-extra-label {
+  color: var(--checkon-admin-muted);
+  font-size: 12px;
+}
+
+fieldset,
+.form__fieldgroup {
+  border: 0;
+}
+
+legend {
+  color: var(--checkon-admin-ink);
+  font-weight: 650;
+}
+
+.form-group {
+  border-bottom-color: var(--checkon-admin-line-soft);
+}
+
+.cms-content-fields,
+.cms-content .tab-content,
+.form--no-dividers .tab-content {
+  background: transparent;
+}
+
+.cms-content .tab-content {
+  padding-top: 8px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--checkon-admin-accent);
+}
+
+/* ------------------------------------------------------------------- Tabs */
+
+.nav-tabs,
+.cms-content-header-tabs .nav,
+.cms-content-header-tabs .nav-tabs {
+  border-bottom: 1px solid var(--checkon-admin-line);
+}
+
+.cms .nav-tabs .nav-link,
+.cms .cms-content-header-tabs .nav-link {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--checkon-admin-muted);
+  font-weight: 600;
+  margin-bottom: -1px;
+  padding: 10px 14px;
+}
+
+.cms .nav-tabs .nav-link:hover,
+.cms .cms-content-header-tabs .nav-link:hover {
+  color: var(--checkon-admin-ink);
+}
+
+.cms .nav-tabs .nav-link.active,
+.cms .nav-tabs .nav-item.show .nav-link,
+.cms .cms-content-header-tabs .nav-link.active,
+.cms .cms-content-header-tabs .nav-link[aria-selected="true"] {
+  background: transparent;
+  border-bottom-color: var(--checkon-admin-accent);
+  color: var(--checkon-admin-ink);
+}
+
+/* -------------------------------------------------------------- Page tree */
+
+.cms .cms-tree.jstree a,
+.cms .cms-tree.jstree a:link,
+.cms .cms-tree.jstree a:visited,
+.cms .tree-holder.jstree a,
+.cms .tree-holder.jstree a:link,
+.cms .tree-holder.jstree a:visited {
+  border-radius: 6px;
+  color: var(--checkon-admin-ink);
+  font-size: 13.5px;
+  line-height: 28px;
+  padding: 0 10px 0 4px;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.cms .cms-tree.jstree a:hover,
+.cms .cms-tree.jstree .jstree-hovered,
+.cms .tree-holder.jstree a:hover {
+  background: var(--checkon-admin-surface-muted);
+  color: var(--checkon-admin-ink);
+}
+
+.cms .cms-tree.jstree a.jstree-clicked,
+.cms .cms-tree.jstree a.jstree-clicked:hover,
+.cms .tree-holder.jstree a.jstree-clicked {
+  background: var(--checkon-admin-accent-soft);
+  border: 0;
+  color: var(--checkon-admin-accent-text);
+  font-weight: 600;
+}
+
+.cms .cms-tree.jstree li.Root > a,
+.cms .cms-tree.jstree li.Root > a:link {
+  font-weight: 650;
+}
+
+.cms .cms-tree.jstree ins {
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------------------- Tables */
+
+.ss-gridfield,
+.grid-field {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.grid-field__table,
+table.grid-field__table {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line);
+  border-collapse: separate;
+  border-radius: var(--checkon-admin-radius-lg);
+  border-spacing: 0;
+  box-shadow: var(--checkon-admin-shadow);
+  overflow: hidden;
+  width: 100%;
+}
+
+.ss-gridfield .toolbar--content,
+.ss-gridfield .ss-gridfield-buttonrow {
+  background: transparent;
+  border: 0;
+  margin-bottom: 12px;
+}
+
+.grid-field__table thead th,
+.grid-field__table .grid-field__title-row th,
+.grid-field__table .grid-field__title {
+  background: var(--checkon-admin-surface);
+  border-bottom: 1px solid var(--checkon-admin-line);
+  color: var(--checkon-admin-muted);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  padding: 12px 14px;
+  text-transform: uppercase;
+}
+
+.grid-field__table td,
+.ss-gridfield-item td {
+  border-bottom: 1px solid var(--checkon-admin-line-soft);
+  color: var(--checkon-admin-text);
+  padding: 11px 14px;
+  vertical-align: middle;
+}
+
+.ss-gridfield-items tr:last-child td,
+.grid-field__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.ss-gridfield-item,
+.ss-gridfield-item.even,
+.ss-gridfield-item.odd {
+  background: var(--checkon-admin-surface);
+}
+
+.ss-gridfield-item:hover,
+.ss-gridfield-item:hover td {
+  background: var(--checkon-admin-accent-soft);
+}
+
+.grid-field__table a {
+  color: var(--checkon-admin-ink);
+}
+
+.grid-field__table a:hover {
+  color: var(--checkon-admin-accent-text);
+}
+
+/* ------------------------------------------------------- Search, popovers */
+
+.search-form,
+.cms-search-form,
+.cms-content-filters,
+.filter-fields {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line);
+  border-radius: var(--checkon-admin-radius-lg);
+  box-shadow: var(--checkon-admin-shadow);
+}
+
+.modal-content,
+.popover,
+.dropdown-menu {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line);
+  border-radius: var(--checkon-admin-radius-lg);
+  box-shadow: var(--checkon-admin-shadow-pop);
+}
+
+.dropdown-item {
+  color: var(--checkon-admin-ink);
+  font-weight: 500;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: var(--checkon-admin-surface-muted);
+  color: var(--checkon-admin-ink);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--checkon-admin-line);
+}
+
+.alert,
+.message {
+  border-radius: var(--checkon-admin-radius);
+  font-weight: 500;
+}
+
+/* Quiet scrollbars. */
+.cms *::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.cms *::-webkit-scrollbar-thumb {
+  background: var(--checkon-admin-line-strong);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.cms *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* GridField's title row is empty on most CheckOn screens; the buttons above carry the actions. */
+.grid-field__table thead tr.grid-field__title-row:not(:has(.grid-field__title:not(:empty))) {
+  display: none;
+}
+
+/* Buttons that are anchors pick up the jQuery UI link colour; restate the button colours above them. */
+.cms .cms-content a.btn-primary,
+.cms .cms-content a.btn-primary:link,
+.cms .cms-content a.btn-primary:visited,
+.cms .cms-content a.btn-success,
+.cms .cms-content a.btn-info {
+  color: #fff;
+}
+
+.cms .cms-content a.btn-secondary,
+.cms .cms-content a.btn-secondary:link,
+.cms .cms-content a.btn-secondary:visited,
+.cms .cms-content a.btn-outline-secondary,
+.cms .cms-content a.btn-outline-primary,
+.cms .cms-content a.btn-light {
+  color: var(--checkon-admin-ink);
+}
+
+.cms .cms-content a.btn-secondary:hover,
+.cms .cms-content a.btn-outline-secondary:hover {
+  color: var(--checkon-admin-ink);
+}
+
+.cms .cms-content a.btn-danger,
+.cms .cms-content a.btn-outline-danger {
+  color: var(--checkon-admin-red);
+}
+
+.cms .cms-content a.btn-danger:hover,
+.cms .cms-content a.btn-outline-danger:hover {
+  color: #fff;
+}
+
+.cms .cms-content a.btn-secondary [class^="font-icon-"],
+.cms .cms-content a.btn-secondary [class*=" font-icon-"] {
+  color: var(--checkon-admin-muted);
+}
+
+/* The "info" blue becomes a neutral note, and its button the primary button. */
+.btn-info,
+.btn-info:not(:disabled):not(.disabled) {
+  background: var(--checkon-admin-accent);
+  border: 1px solid var(--checkon-admin-accent);
+  color: #fff;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+  background: var(--checkon-admin-accent-hover);
+  border-color: var(--checkon-admin-accent-hover);
+  color: #fff;
+}
+
+.alert-info,
+.alert-secondary,
+.message.notice,
+.message.info {
+  background: var(--checkon-admin-surface);
+  border: 1px solid var(--checkon-admin-line);
+  border-left: 3px solid var(--checkon-admin-accent);
+  color: var(--checkon-admin-text);
+}
+
+.alert-success,
+.message.good {
+  background: #f1f8f2;
+  border: 1px solid #cfe5d3;
+  color: #1f5f2c;
+}
+
+.alert-warning,
+.message.warning {
+  background: #fff8ed;
+  border: 1px solid #f6dfb8;
+  color: #8a5300;
+}
+
+.alert-danger,
+.message.bad,
+.message.error {
+  background: #fdf2f2;
+  border: 1px solid #f3cfd0;
+  color: #9e1f24;
+}

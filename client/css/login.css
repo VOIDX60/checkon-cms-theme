@@ -1,0 +1,143 @@
+/* CMS sign-in: a single quiet card on the CheckOn page colour. */
+:root {
+  color-scheme: light;
+  --bs-primary: #f76b15;
+  --bs-primary-rgb: 247, 107, 21;
+  --bs-link-color: #c24a00;
+  --bs-link-color-rgb: 194, 74, 0;
+  --bs-link-hover-color: #a63f00;
+  --bs-body-color: #3d3c38;
+  --bs-body-font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html body {
+  background: #f7f7f6;
+  color: #3d3c38;
+  font-family: var(--bs-body-font-family);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+html body .app-brand {
+  padding-top: 8vh;
+}
+
+html body .app-brand__link {
+  align-items: center;
+  color: #21201c;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+html body .app-brand__logo {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+
+html body .app-brand__name {
+  color: #6b6a65;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+html body .login-form {
+  background: #fff;
+  border: 1px solid #e7e6e3;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(33, 32, 28, 0.04), 0 16px 40px -12px rgba(33, 32, 28, 0.12);
+  margin-top: 24px;
+  padding: 32px 32px 28px;
+}
+
+html body .login-form__title {
+  color: #21201c;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+html body .login-form label,
+html body .login-form .form__field-label {
+  color: #21201c;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+html body .login-form input[type="text"],
+html body .login-form input[type="email"],
+html body .login-form input[type="password"] {
+  background: #fff;
+  border: 1px solid #d3d2ce;
+  border-radius: 8px;
+  box-shadow: none;
+  color: #21201c;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+html body .login-form input:focus {
+  border-color: #f76b15;
+  box-shadow: 0 0 0 3px rgba(247, 107, 21, 0.18);
+  outline: 0;
+}
+
+html body .login-form input[type="submit"],
+html body .login-form button[type="submit"],
+html body .login-form .btn-primary {
+  background: #f76b15;
+  border: 1px solid #f76b15;
+  border-radius: 8px;
+  box-shadow: none;
+  color: #fff;
+  font-weight: 650;
+  min-height: 40px;
+  padding: 8px 18px;
+}
+
+html body .login-form input[type="submit"]:hover,
+html body .login-form button[type="submit"]:hover,
+html body .login-form .btn-primary:hover {
+  background: #e5600f;
+  border-color: #e5600f;
+}
+
+html body .login-form a {
+  color: #c24a00;
+}
+
+html body .login-form__message,
+html body .message {
+  border-radius: 8px;
+}
+
+html body .silverstripe-brand {
+  display: none;
+}
+
+html body .login-form input:focus,
+html body .login-form input:focus-visible,
+html body .login-form .form-control:focus {
+  border-color: #f76b15;
+  box-shadow: 0 0 0 3px rgba(247, 107, 21, 0.18);
+  outline: 0;
+}
+
+html body .login-form input[type="checkbox"] {
+  accent-color: #f76b15;
+}
+
+html body .login-form .form-check-label,
+html body .login-form .checkbox label {
+  color: #3d3c38;
+  font-weight: 500;
+}
+
+html body .app-brand__name {
+  display: block;
+}
