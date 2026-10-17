@@ -375,6 +375,9 @@ table.grid-field__table {
   border-radius: var(--checkon-admin-radius-lg);
   border-spacing: 0;
   box-shadow: var(--checkon-admin-shadow);
+  margin-left: 0;
+  margin-right: 0;
+  min-width: 0;
   overflow: hidden;
   width: 100%;
 }
@@ -441,6 +444,15 @@ table.grid-field__table {
   border: 1px solid var(--checkon-admin-line);
   border-radius: var(--checkon-admin-radius-lg);
   box-shadow: var(--checkon-admin-shadow);
+}
+
+/* The framework runs tables and search filters edge to edge, which is fine for flat rows but
+   leaves a rounded card touching the menu and the window edge. Keep them inside the pane's padding. */
+.cms-content .table,
+.grid-field .cms-content-filters {
+  margin-left: 0;
+  margin-right: 0;
+  min-width: 0;
 }
 
 .modal-content,
